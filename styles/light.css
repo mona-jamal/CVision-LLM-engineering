@@ -1,0 +1,48 @@
+body, .stApp {
+    background-color: #f7f8fc;
+    color: #1e272e;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3 {
+    color: #0fbcf9;
+}
+
+section, .stTextArea, .stTextInput, .stMarkdown, .stFileUploader {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #0772ff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.stButton > button {
+    background-color: #f90f0f;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+}
+
+.stButton > button:hover {
+    background-color: #060606;
+}
+
+.stMarkdown {
+    background-color: #f1f2f6;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #dcdde1;
+}
+
+/* Remove box styling around logo image */
+img {
+    display: block;
+    margin: 0 auto 10px auto;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+

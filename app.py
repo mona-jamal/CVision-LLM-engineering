@@ -1,15 +1,28 @@
 import streamlit as st
 import fitz
-
+import os
 from io import BytesIO
 from llm_integration import get_resume_feedback
 import re
 
-# Set Streamlit page title
-st.set_page_config(page_title="Resume Critique Tool")
+# --- Page Setup ---
+st.set_page_config(page_title="Resume Critique Tool", layout="centered")
 
+# --- LIGHT / DARK Toggle ---
+theme_mode = st.sidebar.radio("Select Theme", ["🌞 Light", "🌙 Dark"])
+
+# --- Load CSS based on theme ---
+css_file = 'styles/light.css' if theme_mode == "🌞 Light" else 'styles/dark.css'
+css_path = os.path.join(os.path.dirname(__file__), css_file)
+if os.path.exists(css_path):
+    with open(css_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+else:
+    st.warning("Custom CSS file not found.")
+
+# --- Logo and Title ---
+st.image("assets/logo.png", width=80)
 st.title("📄 Resume Critique Tool")
-
 st.write("Upload your resume (PDF), or paste it below:")
 
 # File upload
@@ -26,7 +39,6 @@ if uploaded_file is not None:
         text += page.get_text("text")  # Keeps layout better
     resume_text = text
     st.success("✅ Resume text extracted from PDF!")
-
 
 # Show extracted or pasted resume
 if resume_text:
