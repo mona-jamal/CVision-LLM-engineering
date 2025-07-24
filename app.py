@@ -17,6 +17,24 @@ else:
 def styled_markdown(md_text, css_class="custom-markdown"):
     st.markdown(f'<div class="{css_class}">{md_text}</div>', unsafe_allow_html=True)
 
+# --- Bullet auto-insertion helper ---
+def auto_insert_bullets(text):
+    lines = text.splitlines()
+    updated = []
+    for line in lines:
+        if (
+            line.strip() != "" and
+            not line.strip().endswith(":") and
+            not line.strip().isupper() and
+            not line.strip().startswith("•") and
+            not line.strip().startswith("-")
+        ):
+            # Treat indented lines or short task lines as bullets
+            if line.startswith(" ") or line.startswith("\t") or len(line.strip().split()) < 10:
+                line = f"• {line.strip()}"
+        updated.append(line)
+    return "\n".join(updated)
+
 # --- Logo and Title ---
 st.image("assets/logo.png", width=80)
 st.title("📄 Resume Critique Tool")
@@ -30,10 +48,18 @@ resume_text = st.text_area("Or paste your resume text here:", height=200)
 if uploaded_file is not None:
     text = ""
     pdf_doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+
     for page in pdf_doc:
-        text += page.get_text("text")
-    resume_text = text
+        page_dict = page.get_text("dict")
+        for block in page_dict["blocks"]:
+            for line in block.get("lines", []):
+                line_text = " ".join([span["text"] for span in line["spans"]]).strip()
+                if line_text:
+                    text += line_text + "\n"
+
+    resume_text = auto_insert_bullets(text)
     st.success("✅ Resume text extracted from PDF!")
+
 
 # --- Display resume text ---
 if resume_text:
