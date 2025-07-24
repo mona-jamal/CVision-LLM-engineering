@@ -1,0 +1,75 @@
+/* General */
+body, .stApp {
+    background-color: #f7f8fc;
+    color: #1e272e;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #0fbcf9;
+}
+
+/* File uploader, input areas */
+.stTextArea, .stTextInput, .stFileUploader {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #dbe4f0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Button */
+.stButton > button {
+    background-color: #0fbcf9;
+    color: white !important;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.stButton > button:hover {
+    background-color: #0984e3;
+}
+
+/* Resume preview */
+.resume-preview {
+    background-color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
+
+/* Feedback block */
+.feedback-block {
+    background-color: #eef1f6;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccd6e0;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Evaluation label text */
+.score-label {
+    font-size: 16px;
+    margin: 10px 0 5px;
+}
+
+/* Hide Streamlit header */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
+/* Logo styling */
+img {
+    display: block;
+    margin: 0 auto 10px auto;
+}
