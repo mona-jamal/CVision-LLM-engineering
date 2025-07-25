@@ -1,49 +1,60 @@
 # CVision – LLMs Resume Critique Tool
 
-CVision is a web-based application that helps users enhance their resumes using AI-powered feedback from OpenAI’s GPT-3.5. Users can upload a PDF or paste resume text, and the app will analyze the content, score it across five key categories, and offer detailed improvement suggestions — all within a clean and user-friendly interface built with Streamlit.
+**Technical Report – July 2025**
 
 ---
 
-## Features
+## Team Members
 
-* **Upload or Paste**: Support for PDF uploads or plain text input
-* **AI Feedback**: Uses GPT-3.5 to analyze resumes and generate improvement tips
-* **Structured Scoring**: Feedback across key resume quality categories:
-
-  * Structure & Formatting
-  * Grammar & Spelling
-  * Clarity & Readability
-  * Achievements & Impact
-  * Technical Skill Relevance
-* **Visual Feedback**: Emoji score indicators, progress bars, and structured suggestions
-* **Custom UI**: Styled interface with custom CSS
-* **PDF Parsing**: Resume content is extracted using PyMuPDF
+* Mouna Jamal
+* Abdulaziz Al Sayyed
+* Wajed Rashed
+* Reem El-Hadka
+* Yahya Akel
+* Zeinab Abo Hamdan
 
 ---
 
-## Tech Stack
+## Project Overview
 
-| Component       | Technology           |
-| --------------- | -------------------- |
-| Frontend        | Streamlit            |
-| Backend         | Python 3, OpenAI SDK |
-| PDF Parsing     | PyMuPDF (`fitz`)     |
-| UI Styling      | Custom CSS           |
-| Version Control | Git + GitHub         |
+**CVision** is a web-based application that helps users evaluate and improve their resumes using OpenAI's GPT-3.5 language model. It provides AI-powered, structured feedback across five quality dimensions. Users can upload a resume in PDF format or paste plain text directly into the app.
+
+The feedback includes category-wise scores, visual indicators, and detailed improvement suggestions — all rendered in a modern Streamlit interface.
 
 ---
 
-## Project Structure
+## Objectives
+
+* Provide LLM-powered feedback on resumes
+* Enable both PDF uploads and manual text input
+* Deliver structured results in a user-friendly UI
+* Help users enhance the clarity, relevance, and impact of their resumes
+
+---
+
+## Technologies Used
+
+| Component       | Technology         |
+| --------------- | ------------------ |
+| Frontend        | Streamlit          |
+| Backend         | Python, OpenAI SDK |
+| PDF Parsing     | PyMuPDF (`fitz`)   |
+| UI Styling      | Custom CSS         |
+| Version Control | Git, GitHub        |
+
+---
+
+## File Structure
 
 ```
 CVision-LLMs-Resume-Critique/
-├── app.py                   # Main Streamlit app
-├── llm_integration.py      # Handles OpenAI GPT interactions
-├── requirements.txt        # Project dependencies
+├── app.py                   # Main Streamlit application
+├── llm_integration.py      # OpenAI GPT interaction
+├── requirements.txt        # Python dependencies
 ├── styles/
-│   └── style.css           # Custom CSS styling
+│   └── style.css           # Custom UI styling
 ├── assets/
-│   └── logo.png            # App logo
+│   └── logo.png            # Application logo
 ├── .streamlit/
 │   └── config.toml         # Streamlit configuration
 └── README.md               # Project documentation
@@ -51,45 +62,19 @@ CVision-LLMs-Resume-Critique/
 
 ---
 
-## How to Run the Project
+## Workflow Summary
 
-1. **Clone the Repository**
+1. **Resume Upload**
+   Users can upload a PDF or paste their resume text into the interface.
 
-   ```bash
-   git clone https://github.com/your-username/CVision-LLMs-Resume-Critique.git
-   cd CVision-LLMs-Resume-Critique
-   ```
+2. **Text Extraction**
+   If a PDF is uploaded, PyMuPDF is used to extract its content.
 
-2. **(Optional) Create a Virtual Environment**
+3. **LLM Processing**
+   The extracted or pasted text is sent to OpenAI's GPT-3.5 for analysis and feedback generation.
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate         # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Required Dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-   If `requirements.txt` is missing, install individually:
-
-   ```bash
-   pip install streamlit openai PyMuPDF
-   ```
-
-4. **Run the Application**
-
-   ```bash
-   streamlit run app.py
-   ```
-
-5. **Use the App**
-
-   * Upload your PDF resume or paste resume text
-   * Click **“Get Feedback”**
-   * View AI-generated feedback and score breakdown
+4. **Result Display**
+   The feedback is parsed and displayed using visual elements: scores, emojis, progress bars, and improvement suggestions.
 
 ---
 
@@ -106,19 +91,70 @@ CVision-LLMs-Resume-Critique/
 
 ---
 
-## Team Contributors
+## Key Features
 
-* **Mouna Jamal** – Resume upload & input interface
-* **Abdulaziz Al Sayyed** & **Wajed Rashed** – LLM prompt integration and backend logic
-* **Zeinab Abo Hamdan** – UI display of results and visual indicators
-* **Reem El-Hadka** – PDF parsing using PyMuPDF
-* **Yahya Akel** – Testing, validation, and overall refinement
-* **Entire Team** – Documentation, GitHub setup, and final presentation
+* Upload a PDF or paste plain text
+* Intelligent feedback from OpenAI GPT-3.5
+* Scoring across 5 resume quality dimensions
+* Progress bars and emoji indicators
+* Clean, styled, responsive UI
+* Works across various resume formats
 
 ---
 
-## Project Highlights
+## How to Run the Project
 
-* Designed for job seekers and students to improve resume quality
-* Real-world application of LLMs for natural language analysis
-* Combines AI with intuitive UI to deliver instant, actionable insights
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/CVision-LLMs-Resume-Critique.git
+cd CVision-LLMs-Resume-Critique
+```
+
+### 2. (Optional) Create a Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate       # On Windows: venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install:
+
+* `streamlit`
+* `openai>=1.0.0`
+* `pymupdf`
+
+### 4. Run the App
+
+```bash
+streamlit run app.py
+```
+
+### 5. Use the App
+
+* Upload a PDF or paste resume text
+* Click **"Get Feedback"**
+* Review scores and detailed improvement suggestions
+
+---
+
+## Team Contributions
+
+* **Mouna Jamal** – Built the resume input interface (file uploader and text input)
+* **Abdulaziz Al Sayyed & Wajed Rashed** – Developed OpenAI GPT-3.5 integration and structured prompt handling
+* **Zeinab Abo Hamdan** – Created the results UI with scores and feedback visualization
+* **Reem El-Hadka** – Implemented PDF parsing with PyMuPDF
+* **Yahya Akel** – Performed QA testing, feedback evaluation, and logic refinement
+* **All Members** – Worked collaboratively on documentation and final presentation
+
+---
+
+## Conclusion
+
+**CVision** demonstrates how Large Language Models can be applied to real-world use cases like resume evaluation. By combining natural language processing with intuitive UI, the tool delivers practical, high-impact feedback to help job seekers stand out in competitive markets.
