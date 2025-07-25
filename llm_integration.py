@@ -36,7 +36,7 @@ Format your response like this:
 **Clarity & Readability:** [feedback here]
 **Achievements & Impact:** [feedback here]
 **Technical Skill Relevance:** [feedback here]
----
+
 Here is the resume:
 \"\"\"{resume_text}\"\"\"
     """

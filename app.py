@@ -120,7 +120,7 @@ if resume_text:
             st.markdown("</div>", unsafe_allow_html=True)
 
             st.subheader("📢 Detailed Feedback")
-            feedback_text = re.split(r"📢 \*\*Detailed Feedback\*\*", feedback)[-1]
-            styled_markdown(feedback_text.strip(), "feedback-block")
+            feedback_text = "\n" + re.split(r"📢 \*\*Detailed Feedback\*\*", feedback)[-1]
+            styled_markdown(feedback_text, "feedback-block")
         else:
             st.error("❌ Failed to get feedback from LLM.")
